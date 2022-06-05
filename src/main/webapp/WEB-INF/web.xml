@@ -1,0 +1,15 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<!-- Custom entry point for servlet, which route request to CustomDispatcher class -->
+<web-app>
+	<servlet>
+		<servlet-name>CustomDispatcherServlet</servlet-name>
+		<servlet-class>com.github.sats17.servlet.controller.CustomDispatcher</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomDispatcherServlet</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+</web-app>
