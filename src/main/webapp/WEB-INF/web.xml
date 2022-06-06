@@ -1,15 +1,52 @@
 <!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
-<!-- Custom entry point for servlet, which route request to CustomDispatcher class -->
+ 
 <web-app>
+
+	<!-- Custom entry point for servlet, which route request to CustomDispatcher class -->
 	<servlet>
-		<servlet-name>CustomDispatcherServlet</servlet-name>
+		<servlet-name>ServletDefaultDispatcher</servlet-name>
 		<servlet-class>com.github.sats17.servlet.controller.CustomDispatcher</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>CustomDispatcherServlet</servlet-name>
-		<url-pattern>/api/*</url-pattern>
+		<servlet-name>ServletDefaultDispatcher</servlet-name>
+		<url-pattern>/servlet/*</url-pattern>
 	</servlet-mapping>
+	
+	<!--  Spring dispatcher servlet definition in this file, servlet-name-servlet.xml file must contains
+	all beans creation, scanning or autowiring for your spring application. So this DispatcherServlet can
+	route http calls to those controllers.-->
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/spring/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- <servlet>
+	    <servlet-name>cxf</servlet-name>
+	    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+    <servlet-mapping>
+	    <servlet-name>cxf</servlet-name>
+	    <url-pattern>/*</url-pattern>
+	</servlet-mapping> -->
+	
+<!-- 	<context-param>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param> -->
+	
+<!-- 	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener> -->
+	
 </web-app>

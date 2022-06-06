@@ -23,8 +23,8 @@ public class CustomDispatcher extends HttpServlet {
 
 		resp.setStatus(200);
 		resp.setHeader("Content-Type", "application/json");
-		resp.getOutputStream().println("tesT");
-		
+		resp.getOutputStream().println("Returning from raw servlet");
+		System.out.println(resp);
 	}
 	
 }
